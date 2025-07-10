@@ -101,7 +101,8 @@ p{
 }
 
 .nav-list li:hover .tooltip,
-a:hover .tooltip{
+a:hover .tooltip,
+.portfolio-item:hover .work-info{
     visibility: visible;
     opacity: 1;
 }
@@ -120,7 +121,7 @@ a:hover .tooltip{
     height: 100%;
     transform-style: preserve-3d;
     transform-origin: 50% 50% -50vw;
-    transform: rotateY(-180deg);
+    transform: rotateY(-270deg);
 }
 
 .section{
@@ -143,8 +144,12 @@ a:hover .tooltip{
 }
 
 .section.resume{
-    transform: translatez(-100vw) rotateY(-180deg);
+    transform: translateZ(-100vw) rotateY(-180deg);
     transform-origin: 50%;
+}
+
+.section.portfolio{
+    transform: translateX(-50vw) translateZ(-50vw) rotateY(-90deg);
 }
 
 .home,
@@ -263,7 +268,8 @@ z-index: -1;
     padding: 1.2rem 4rem;
 }
 
-.resume{
+.resume,
+.portfolio{
     padding-top: 2rem;
     padding-bottom: 28rem;
 }
@@ -286,7 +292,8 @@ z-index: -1;
     transition: .5s;
 }
 
-.tab-list.resume-list.active{
+.tab-list.resume-list.active,
+.tab-list.portfolio-list.active{
     color: var(--main-color);
     border-color: var(--main-color);
 }
@@ -314,7 +321,7 @@ z-index: -1;
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
     gap: 2rem;
     overflow-y: auto;
     overflow-x: hidden;
@@ -323,7 +330,8 @@ z-index: -1;
     transform: scale(0.8);
 }
 
-.tab-grid.resume-box.active{
+.tab-grid.resume-box.active,
+.tab-grid.portfolio-box.active{
     visibility: visible;
     opacity: 1;
     transform: scale(1);
@@ -375,4 +383,145 @@ z-index: -1;
 
 .tab-item p{
     margin-top: 1rem;
+}
+
+.resume-box.skills{
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.resume-box.skills .resume-item{
+    align-items: center;
+}
+
+.resume-box.skills .resume-item i{
+    font-size: 8rem;
+}
+
+.resume-box.skills .resume-item:hover{
+    color: var(--main-color);
+}
+
+.resume-box.skills .resume-item p{
+    margin-top: 0;
+}
+
+.portfolio-list:nth-child(2){
+    justify-content: flex-end;
+}
+
+.portfolio-box.work .portfolio-item{
+    position: relative;
+}
+
+.portfolio-box.work .portfolio-item::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--third-bg-color);
+    border-radius: 0.8rem;
+    z-index: 1;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.portfolio-box.work .portfolio-item:hover::before{
+    opacity: 0.9;
+}
+
+.portfolio-item .work-img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.8rem;
+    overflow: hidden;
+}
+
+.portfolio-item .work-img img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.portfolio-item:hover .work-img img{
+    transform: scale(1.2);
+}
+
+.portfolio-item .work-info{
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.portfolio-item .work-info h4{
+    line-height: 1;
+}
+
+.portfolio-item .work-info .tech-used{
+    color: var(--main-color);
+    border-bottom: 0.1rem solid var(--white-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.portfolio-item .portfolio-icon a{
+    position: relative;
+    display: inline-flex;
+    padding: 1rem;
+    background: var(--white-color);
+    border-radius: 50%;
+    font-size: 2.5rem;
+    color: var(--bg-color);
+    transition: 0.3s;
+}
+
+.portfolio-item .work-icon a:nth-child(1){
+    margin-right: 1rem;
+}
+.portfolio-item .work-icon a:hover{
+    background: var(--main-color);
+}
+
+.portfolio-item .service-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-item .service-icon .icon{
+    font-size: 5rem;
+    margin-left: -0.3rem;
+}
+
+.portfolio-item:hover .service-icon .icon{
+    color: var(--main-color);
+}
+
+.portfolio-item:hover .service-icon a{
+    background: var(--main-color);
+}
+
+.portfolio-item .service-icon a i{
+    transform: rotate(-135deg);
+    transition: 0.3s;
+}
+
+.portfolio-item .service-icon a:hover i{
+        transform: rotate(-180deg);
+}
+
+.portfolio-box.service .portfolio-item h4{
+    transition: 0.3s;
+}
+
+.portfolio-box.service .portfolio-item:hover h4{
+    color: var(--main-color);
 }
