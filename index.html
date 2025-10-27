@@ -81,21 +81,67 @@
          </section>
 
     <!-- about section -->
-     <section class="section about">
-            <div class="img_wrapper">
-                <div class="img-box about-img">
-                    <img src="images/img.png" alt="">
-                </div>
-            </div>
-            <div class="about-info">
-                <h2 class="title">About Me</h2>
-                <h3>A Web Developer!!</h3>
-                <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, cumque
-                    voluptatibus. Quisquam, doloribus. Doloribus, cumque. Quisquam, doloribus. Doloribus, cumque.
-                    Quisquam, doloribus. Doloribus, cumque.</p>
-                    <a href="#" class="btn">View More</a>
-            </div>
-     </section>
+<section class="section about">
+<!-- Image -->
+  <div class="img_wrapper" id="aboutImage">
+    <div class="img-box about-img">
+      <img src="images/img.png" alt="Priyo Ghosh">
+    </div>
+  </div>
+  <div class="about-info" id="aboutInfoContainer">
+    <h2 class="title" id="aboutTitle">About Me</h2>
+    <h3 id="aboutSubTitle">A Web Developer & Computer Science Student</h3>
+
+    <!-- Default visible paragraph -->
+    <p class="desc" id="aboutDesc">
+      Hello! I'm <strong>Priyo Ghosh</strong>, a passionate Computer Science and Engineering (CSE) student with a strong interest in
+      web development. I enjoy designing and building modern, responsive, and user-friendly web applications.
+    </p>
+
+    <!-- Hidden extra info -->
+    <div class="more-info" id="moreInfo">
+      <div class="about-columns">
+        <!-- Left column -->
+        <div class="left-column">
+          <h3>🎓 Education</h3>
+          <p class="desc">
+            I am currently pursuing my <strong>Bachelor’s degree in Computer Science and Engineering</strong>. I have completed core courses in mathematics, programming, electronics, networking, AI, and software engineering.
+          </p>
+
+          <h3>💻 Technical Skills</h3>
+          <ul class="skills-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React.js</li>
+            <li>Node.js</li>
+            <li>Tailwind CSS</li>
+            <li>CMS (WordPress)</li>
+          </ul>
+        </div>
+
+        <!-- Right column -->
+        <div class="right-column">
+          <h3>📚 Major Courses Completed</h3>
+          <div class="courses-box">
+            <p class="desc">
+              CSE 101 – Discrete Mathematics • CSE 103 – Structured Programming • CSE 105 – Data Structures •
+              CSE 201 – OOP • CSE 203 – Digital Logic Design • CSE 205 – Algorithms • CSE 209 – Database Systems •
+              CSE 301 – Web Programming • CSE 311 – Computer Networking • CSE 315 – Artificial Intelligence •
+              CSE 411 – Machine Learning • CSE 400A/B – Capstone Project / Thesis
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View More button -->
+    <a href="#" class="btn" id="viewMoreBtn">View More</a>
+  </div>
+</section>
+
+
+
 
     <!-- resume (experience, skills, education) section -->
      <section class="section resume">

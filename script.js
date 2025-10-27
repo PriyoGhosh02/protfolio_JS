@@ -74,6 +74,32 @@ portfolioLists.forEach((list,idx) => {
         });
 });
 
+//about section
+// View More toggle
+document.getElementById('viewMoreBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const moreInfo = document.getElementById('moreInfo');
+  const aboutImage = document.getElementById('aboutImage');
+  const aboutInfo = document.getElementById('aboutInfoContainer');
+
+  if (moreInfo.style.display === 'block') {
+    // Hide extra info, show image, revert to default layout
+    moreInfo.style.display = 'none';
+    aboutImage.style.display = 'block';
+    aboutInfo.classList.remove('expanded');
+    this.textContent = 'View More';
+  } else {
+    // Show extra info, hide image, center title/desc
+    moreInfo.style.display = 'block';
+    aboutImage.style.display = 'none';
+    aboutInfo.classList.add('expanded');
+    this.textContent = 'View Less';
+  }
+});
+
+
+
 
 // visibility for contact section when reloading (cube reloading animation)
 setTimeout(()=>{

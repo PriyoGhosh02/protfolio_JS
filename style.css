@@ -305,9 +305,6 @@ a:hover .tooltip,
     text-align: center;
 }
 
-.about-info .title {
-    text-align: left;
-}
 
 .about-info h3 {
     font-size: 2.5rem;
@@ -318,6 +315,69 @@ a:hover .tooltip,
 .about-info .btn {
     padding: 1.2rem 4rem;
 }
+
+/* Default layout remains unchanged */
+.about-info {
+  text-align: left;
+  transition: all 0.5s ease;
+}
+
+.about-info.expanded {
+  text-align: center;
+}
+
+
+/* Hidden extra content */
+.more-info {
+  display: none;
+  margin-top: 20px;
+}
+
+/* Columns for expanded view */
+.about-columns {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.left-column, .right-column {
+  flex: 1;
+  min-width: 300px; /* ensures columns stack on small screens */
+}
+
+
+/* Skills list style */
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 20px;
+}
+
+.skills-list li {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 5px;
+  font-size: 14px;
+}
+
+/* Courses box style */
+.courses-box {
+  max-height: 300px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Center title and description when expanded */
+.about-info.expanded {
+  text-align: center;
+}
+
 
 .resume,
 .portfolio {
