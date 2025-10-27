@@ -726,7 +726,8 @@ a:hover .tooltip,
     margin-bottom: 1rem;
 }
 
-.portfolio-item .portfolio-icon a {
+.portfolio-item .portfolio-icon a, .tab-item .portfolio-icon a
+ {
     position: relative;
     display: inline-flex;
     padding: 1rem;
@@ -741,7 +742,7 @@ a:hover .tooltip,
     margin-right: 1rem;
 }
 
-.portfolio-item .work-icon a:hover {
+.portfolio-item .work-icon a:hover, .tab-item .work-icon a:hover {
     background: var(--main-color);
 }
 
