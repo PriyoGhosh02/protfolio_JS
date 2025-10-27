@@ -17,44 +17,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 message: formData.get('message')
             };
 
-            // Use EmailJS (client-side, free tier) - you must set up your own EmailJS account and service/template/user IDs
-            // Replace these with your own EmailJS credentials
-            var serviceID = 'service_xxxxxxx'; // <-- replace with your EmailJS service ID
-            var templateID = 'template_xxxxxxx'; // <-- replace with your EmailJS template ID
-            var userID = 'user_xxxxxxx'; // <-- replace with your EmailJS public key
-
-            // Prepare payload for EmailJS
-            var payload = {
-                service_id: serviceID,
-                template_id: templateID,
-                user_id: userID,
-                template_params: {
-                    from_name: data.name,
-                    from_email: data.email,
-                    phone: data.phone,
-                    subject: data.subject,
-                    message: data.message,
-                    to_email: 'priyoghosh02@gmail.com'
-                }
-            };
-
-            fetch('https://api.emailjs.com/api/v1.0/email/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
+            // Use EmailJS browser API
+            emailjs.send('service_4whq4zb', '__ejs-test-mail-service__', {
+                from_name: data.name,
+                from_email: data.email,
+                phone: data.phone,
+                subject: data.subject,
+                message: data.message,
+                to_email: 'priyoghosh02@gmail.com'
             })
             .then(function(response) {
-                if (response.ok) {
-                    mailStatus.textContent = 'Message sent successfully!';
-                    contactForm.reset();
-                } else {
-                    mailStatus.textContent = 'Failed to send message. Please try again.';
-                }
-            })
-            .catch(function(error) {
-                mailStatus.textContent = 'Error sending message.';
+                mailStatus.textContent = 'Message sent successfully!';
+                contactForm.reset();
+            }, function(error) {
+                mailStatus.textContent = 'Failed to send message. Please try again.';
             });
         });
     }
@@ -144,7 +120,7 @@ document.getElementById('downloadCV').addEventListener('click', function(e) {
     link.click();
 });
 
-document.getElementById('twitterLink').addEventListener('click', function(e) {
+document.getElementById('googleLink').addEventListener('click', function(e) {
     e.preventDefault(); // stops link from navigating
     alert('Opps!! Sorry,No account here!');
 });
