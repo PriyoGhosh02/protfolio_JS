@@ -565,7 +565,7 @@ a:hover .tooltip,
     visibility: visible;
     opacity: 1;
     transform: scale(1);
-    transition: .5s;
+    /* transition: .5s; */
 }
 
 .resume-box:hover > :not(:hover) {
