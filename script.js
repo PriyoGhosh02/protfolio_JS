@@ -44,6 +44,11 @@ document.getElementById('downloadCV').addEventListener('click', function(e) {
     link.click();
 });
 
+document.getElementById('twitterLink').addEventListener('click', function(e) {
+    e.preventDefault(); // stops link from navigating
+    alert('Opps!! Sorry,No account here!');
+});
+
 
 // resume section when clicking tab-list
 resumeLists.forEach((list,idx) => {
