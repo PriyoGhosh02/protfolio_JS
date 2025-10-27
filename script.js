@@ -122,7 +122,18 @@ document.getElementById('downloadCV').addEventListener('click', function(e) {
 
 document.getElementById('googleLink').addEventListener('click', function(e) {
     e.preventDefault(); // stops link from navigating
-    alert('Opps!! Sorry,No account here!');
+    
+    // Remove active class from current nav and section
+    document.querySelector('.nav-list li.active').classList.remove('active');
+    document.querySelector('.section.active').classList.remove('active');
+    
+    // Add active class to contact nav item (last nav item)
+    const navItems = document.querySelectorAll('.nav-list li');
+    navItems[navItems.length - 1].classList.add('active');
+    
+    // Add active class to contact section and rotate cube
+    sections[4].classList.add('active');
+    cube.style.transform = 'rotateY(-360deg)';
 });
 
 
