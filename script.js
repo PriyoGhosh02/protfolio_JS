@@ -35,6 +35,16 @@ navs.forEach((nav,idx) => {
 
 });
 
+// portfolio and CV download button
+document.getElementById('downloadCV').addEventListener('click', function(e) {
+    e.preventDefault();
+    const link = document.createElement('a');
+    link.href = './images/Priyo_Ghosh_CV.pdf';
+    link.download = 'Priyo_Ghosh_CV.pdf';
+    link.click();
+});
+
+
 // resume section when clicking tab-list
 resumeLists.forEach((list,idx) => {
     list.addEventListener('click', () => {

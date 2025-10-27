@@ -389,6 +389,11 @@ a:hover .tooltip,
     transition: .5s;
 }
 
+.resume-box:hover > :not(:hover) {
+    opacity: 0.6;
+    filter: blur(5px);
+}
+
 .tab-item {
     display: flex;
     flex-direction: column;
@@ -396,6 +401,7 @@ a:hover .tooltip,
     background: var(--third-bg-color);
     padding: 2rem;
     border-radius: 2rem;
+    transition: all 0.3s ease;
 }
 
 .tab-item h4 {
