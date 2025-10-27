@@ -1,3 +1,76 @@
+// Contact form mail sending functionality using EmailJS
+document.addEventListener('DOMContentLoaded', function() {
+    var contactForm = document.getElementById('contactForm');
+    var mailStatus = document.getElementById('mailStatus');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            mailStatus.textContent = 'Sending...';
+
+            // Collect form data
+            var formData = new FormData(contactForm);
+            var data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+
+            // Use EmailJS (client-side, free tier) - you must set up your own EmailJS account and service/template/user IDs
+            // Replace these with your own EmailJS credentials
+            var serviceID = 'service_xxxxxxx'; // <-- replace with your EmailJS service ID
+            var templateID = 'template_xxxxxxx'; // <-- replace with your EmailJS template ID
+            var userID = 'user_xxxxxxx'; // <-- replace with your EmailJS public key
+
+            // Prepare payload for EmailJS
+            var payload = {
+                service_id: serviceID,
+                template_id: templateID,
+                user_id: userID,
+                template_params: {
+                    from_name: data.name,
+                    from_email: data.email,
+                    phone: data.phone,
+                    subject: data.subject,
+                    message: data.message,
+                    to_email: 'priyoghosh02@gmail.com'
+                }
+            };
+
+            fetch('https://api.emailjs.com/api/v1.0/email/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    mailStatus.textContent = 'Message sent successfully!';
+                    contactForm.reset();
+                } else {
+                    mailStatus.textContent = 'Failed to send message. Please try again.';
+                }
+            })
+            .catch(function(error) {
+                mailStatus.textContent = 'Error sending message.';
+            });
+        });
+    }
+});
+// Enable mouse wheel scrolling for the courses table inside the about section
+document.addEventListener('DOMContentLoaded', function() {
+    var coursesTable = document.querySelector('.courses-box');
+    if (coursesTable) {
+        coursesTable.addEventListener('wheel', function(e) {
+            if (this.scrollHeight > this.clientHeight) {
+                e.preventDefault();
+                this.scrollTop += e.deltaY;
+            }
+        }, { passive: false });
+    }
+});
 const navs = document.querySelectorAll('.nav-list li');
 const cube = document.querySelector('.box');
 const sections = document.querySelectorAll('.section');
@@ -10,9 +83,36 @@ const portfolioBoxes = document.querySelectorAll('.portfolio-box');
 
 
 
+// Helper: reset the about section to default (collapsed) state
+function resetAbout() {
+  const moreInfoEl = document.getElementById('moreInfo');
+  const viewBtn = document.getElementById('viewMoreBtn');
+  const aboutImg = document.getElementById('aboutImage');
+  const aboutContainer = document.getElementById('aboutInfoContainer');
+  const desc = document.getElementById('aboutDesc');
+
+  if (!moreInfoEl || !viewBtn || !aboutContainer || !desc) return;
+
+  // hide extra panel
+  moreInfoEl.style.display = 'none';
+  aboutImg.style.display = 'block';
+  aboutContainer.classList.remove('expanded');
+  viewBtn.textContent = 'View More';
+
+  // restore description before the moreInfo element
+  aboutContainer.insertBefore(desc, moreInfoEl);
+
+  // ensure the button is after the moreInfo element
+  if (moreInfoEl.nextSibling) aboutContainer.insertBefore(viewBtn, moreInfoEl.nextSibling);
+  else aboutContainer.appendChild(viewBtn);
+}
+
 // navbar actions and all section actions along with cube rotation when navbar is clicked
 navs.forEach((nav,idx) => {
     nav.addEventListener('click', () => {
+        // reset about to default whenever navigating away or between sections
+        resetAbout();
+
         document.querySelector('.nav-list li.active').classList.remove('active');
         nav.classList.add('active');
 
@@ -76,27 +176,50 @@ portfolioLists.forEach((list,idx) => {
 
 //about section
 // View More toggle
-document.getElementById('viewMoreBtn').addEventListener('click', function(e) {
-  e.preventDefault();
+const viewMoreBtn = document.getElementById('viewMoreBtn');
+const moreInfo = document.getElementById('moreInfo');
+const aboutImage = document.getElementById('aboutImage');
+const aboutInfo = document.getElementById('aboutInfoContainer');
+const aboutDesc = document.getElementById('aboutDesc');
 
-  const moreInfo = document.getElementById('moreInfo');
-  const aboutImage = document.getElementById('aboutImage');
-  const aboutInfo = document.getElementById('aboutInfoContainer');
+// store original positions so we can restore on collapse
+const originalDescParent = aboutDesc.parentNode;
+const originalDescNext = aboutDesc.nextSibling;
+const originalBtnParent = viewMoreBtn.parentNode;
+const originalBtnNext = viewMoreBtn.nextSibling;
 
-  if (moreInfo.style.display === 'block') {
-    // Hide extra info, show image, revert to default layout
-    moreInfo.style.display = 'none';
-    aboutImage.style.display = 'block';
-    aboutInfo.classList.remove('expanded');
-    this.textContent = 'View More';
-  } else {
-    // Show extra info, hide image, center title/desc
-    moreInfo.style.display = 'block';
-    aboutImage.style.display = 'none';
-    aboutInfo.classList.add('expanded');
-    this.textContent = 'View Less';
-  }
+viewMoreBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    if (moreInfo.style.display === 'block') {
+                // Collapse: restore using resetAbout (centralized)
+                resetAbout();
+    } else {
+        // Expand: move the short description into the scrollable more-info area
+        moreInfo.style.display = 'block';
+        aboutImage.style.display = 'none';
+        aboutInfo.classList.add('expanded');
+        this.textContent = 'View Less';
+
+        // Prepend the short description at the top of the scrollable area
+        moreInfo.insertBefore(aboutDesc, moreInfo.firstChild);
+
+        // Move the button inside the scrollable area so it remains accessible; keep its listener
+        moreInfo.appendChild(viewMoreBtn);
+    }
 });
+
+// Ensure mouse wheel/touchpad scrolling works while pointer is over the .more-info panel.
+// Some browsers/transform contexts can prevent default wheel bubbling — capture and manually scroll.
+if (moreInfo) {
+    moreInfo.addEventListener('wheel', function(e) {
+        // only intervene when there's actually overflow
+        if (this.scrollHeight > this.clientHeight) {
+            e.preventDefault();
+            this.scrollTop += e.deltaY;
+        }
+    }, { passive: false });
+}
 
 
 

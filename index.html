@@ -57,7 +57,7 @@
                                 <i class='bx bxl-github' ></i>
                                 <span class="tooltip">Github</span>
                             </a>
-                            <a href="https://www.linkedin.com/in/priyo02/" target="_blank">
+                            <a href="https://www.linkedin.com/in/priyo02" target="_blank">
                                 <i class='bx bxl-linkedin' ></i>
                                 <span class="tooltip">Linkedin</span>
                             </a>
@@ -123,14 +123,79 @@
         <!-- Right column -->
         <div class="right-column">
           <h3>📚 Major Courses Completed</h3>
-          <div class="courses-box">
-            <p class="desc">
-              CSE 101 – Discrete Mathematics • CSE 103 – Structured Programming • CSE 105 – Data Structures •
-              CSE 201 – OOP • CSE 203 – Digital Logic Design • CSE 205 – Algorithms • CSE 209 – Database Systems •
-              CSE 301 – Web Programming • CSE 311 – Computer Networking • CSE 315 – Artificial Intelligence •
-              CSE 411 – Machine Learning • CSE 400A/B – Capstone Project / Thesis
-            </p>
-          </div>
+                    <div class="courses-box">
+                        <table class="courses-table">
+                            <thead>
+                                <tr>
+                                    <th>Course Code</th>
+                                    <th>Course Title</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CSE 101</td>
+                                    <td>Discrete Mathematics</td>
+                                    <td>Logic, sets, relations, functions, combinatorics, graphs.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 103</td>
+                                    <td>Structured Programming</td>
+                                    <td>Programming basics, control structures, functions, arrays.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 105</td>
+                                    <td>Data Structures</td>
+                                    <td>Lists, stacks, queues, trees, graphs, algorithms.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 201</td>
+                                    <td>OOP</td>
+                                    <td>Object-oriented concepts, classes, inheritance, polymorphism.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 203</td>
+                                    <td>Digital Logic Design</td>
+                                    <td>Logic gates, circuits, Boolean algebra, sequential logic.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 205</td>
+                                    <td>Algorithms</td>
+                                    <td>Algorithm design, analysis, sorting, searching, complexity.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 209</td>
+                                    <td>Database Systems</td>
+                                    <td>Relational databases, SQL, normalization, transactions.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 301</td>
+                                    <td>Web Programming</td>
+                                    <td>HTML, CSS, JavaScript, web frameworks, client-server.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 311</td>
+                                    <td>Computer Networking</td>
+                                    <td>Network models, protocols, TCP/IP, routing, security.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 315</td>
+                                    <td>Artificial Intelligence</td>
+                                    <td>AI concepts, search, logic, machine learning basics.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 411</td>
+                                    <td>Machine Learning</td>
+                                    <td>Supervised/unsupervised learning, models, evaluation.</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE 400A/B</td>
+                                    <td>Capstone Project / Thesis</td>
+                                    <td>Research, project development, presentation, documentation.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
         </div>
       </div>
     </div>
@@ -538,19 +603,20 @@
      <div class="section contact active">
         <h2 class="title">Contact</h2>
         <div class="contact-wrapper">
-            <from class="contact-form">
+            <form class="contact-form" id="contactForm">
                 <h3>Let's Work Together!</h3>
                 <div class="field-box">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="text" placeholder="Phone Number" required>
-                    <input type="text" placeholder="Email Subject" required>
-                    <textarea name="" id="" placeholder="Your Message" required></textarea>
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="text" name="phone" placeholder="Phone Number" required>
+                    <input type="text" name="subject" placeholder="Email Subject" required>
+                    <textarea name="message" id="messageBox" placeholder="Your Message" required style="height:12rem;"></textarea>
                 </div>
                 <div class="contact-btn">
                     <button type="submit" class="btn">Send Message</button>
                 </div>
-            </from>
+                <div id="mailStatus" style="margin-top:1.2rem;font-size:1.5rem;"></div>
+            </form>
         </div>
      </div>
         </div>
