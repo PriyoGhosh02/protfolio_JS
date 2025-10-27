@@ -1,40 +1,4 @@
-// Contact form mail sending functionality using EmailJS
-document.addEventListener('DOMContentLoaded', function() {
-    var contactForm = document.getElementById('contactForm');
-    var mailStatus = document.getElementById('mailStatus');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            mailStatus.textContent = 'Sending...';
 
-            // Collect form data
-            var formData = new FormData(contactForm);
-            var data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                subject: formData.get('subject'),
-                message: formData.get('message')
-            };
-
-            // Use EmailJS browser API
-            emailjs.send('service_4whq4zb', '__ejs-test-mail-service__', {
-                from_name: data.name,
-                from_email: data.email,
-                phone: data.phone,
-                subject: data.subject,
-                message: data.message,
-                to_email: 'priyoghosh02@gmail.com'
-            })
-            .then(function(response) {
-                mailStatus.textContent = 'Message sent successfully!';
-                contactForm.reset();
-            }, function(error) {
-                mailStatus.textContent = 'Failed to send message. Please try again.';
-            });
-        });
-    }
-});
 // Enable mouse wheel scrolling for the courses table inside the about section
 document.addEventListener('DOMContentLoaded', function() {
     var coursesTable = document.querySelector('.courses-box');
