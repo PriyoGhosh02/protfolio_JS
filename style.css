@@ -194,7 +194,7 @@ a:hover .tooltip,
 }
 
 @keyframes typing {
-  from { width: 0; }
+  from { width: 1ch; }
   to { width: 13ch; } 
 }
 
@@ -575,6 +575,10 @@ a:hover .tooltip,
     transform: scale(0.8);
 }
 
+.tab-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .tab-grid.resume-box.active,
 .tab-grid.portfolio-box.active {
     visibility: visible;
@@ -917,6 +921,9 @@ a:hover .tooltip,
     .contact {
         padding-top: 1rem;
     }
+    .tab-grid {
+    grid-template-columns: repeat(1, 1fr);
+}
 }
 
 @media screen and (max-width: 400px) {
