@@ -79,7 +79,7 @@ navs.forEach((nav,idx) => {
 document.getElementById('downloadCV').addEventListener('click', function(e) {
     e.preventDefault();
     const link = document.createElement('a');
-    link.href = './images/Priyo_Ghosh_CV.pdf';
+    link.href = './images/Resume.pdf';
     link.download = 'Priyo_Ghosh_CV.pdf';
     link.click();
 });
